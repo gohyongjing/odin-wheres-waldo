@@ -6,8 +6,8 @@ export default function BoundingBox(props) {
             style={{
                 width: '50px',
                 height: '50px',
-                left: props.coords[0] - 25,
-                top: props.coords[1] - 25,
+                left: props.coords.x - 25,
+                top: props.coords.y - 25,
             }}
         >
         </div>

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import checkAnswer from "../checkAnswer";
 
 export default function CharacterSelector(props) {
     const [message, setMessage] = useState('Select character!');
+
+    useEffect(() => {
+        setMessage('Select Character!');
+    }, [props.coords])
 
     function handleSelect(characterName) {
         const characters = props.characters;
@@ -13,7 +17,8 @@ export default function CharacterSelector(props) {
             }
         }
         if (index !== undefined) {
-            if (checkAnswer(characterName, props.coords)) {
+            checkAnswer(characterName, props.coords, props.app).then((result) => {
+            if (result) {
                 props.setCharacters((chars) => {
                     const newCharacters = chars.map(
                         (char) => { return { ...char } });
@@ -23,6 +28,7 @@ export default function CharacterSelector(props) {
             } else {
                 setMessage('Try again!');
             }
+            });
         }
     }
 
@@ -31,8 +37,8 @@ export default function CharacterSelector(props) {
         <div
             className="character-selector"
             style={{
-                left: props.coords[0] + 50,
-                top: props.coords[1] - 25,
+                left: props.coords.x + 50,
+                top: props.coords.y - 25,
             }}
         >
             <div>{message}</div>
