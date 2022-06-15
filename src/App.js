@@ -1,11 +1,22 @@
 import { useState } from "react";
-import GameImg from "./wheres-waldo.jpg";
 
 import BoundingBox from "./BoundingBox";
 import CharacterSelector from "./CharacterSelector";
 
+import GameImg from "./wheres-waldo.jpg";
+import WaldoImg from "./Waldo.webp";
+import WendaImg from "./Wenda.webp";
+import OdlawImg from "./Odlaw.webp";
+import WhitebeardImg from "./Whitebeard.webp";
+
 function App() {
   const [clicked, setClicked] = useState(null);
+  const [characters, setCharacters] = useState(
+    [{name: 'Waldo', image: WaldoImg, found: false},
+    {name: 'Wenda', image: WendaImg, found: false},
+    {name: 'Odlaw', image: OdlawImg, found: false},
+    {name: 'Whitebeard', image: WhitebeardImg, found: false}]
+  );
 
   function handleClick(e) {
     setClicked((prevClicked) => {
@@ -21,7 +32,7 @@ function App() {
         onClick={handleClick}
       ></img>
       <BoundingBox coords={clicked}/>
-      <CharacterSelector coords={clicked}/>
+      <CharacterSelector coords={clicked} characters={characters} setCharacters={setCharacters}/>
     </div>
   );
 }

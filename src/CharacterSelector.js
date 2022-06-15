@@ -1,14 +1,31 @@
-import WaldoImg from "./Waldo.webp";
-import WendaImg from "./Wenda.webp";
-import OdlawImg from "./Odlaw.webp";
-import WhitebeardImg from "./Whitebeard.webp";
+import { useState } from "react";
+import checkAnswer from "./checkAnswer";
 
 export default function CharacterSelector(props) {
-    const characters = [{name: 'Waldo', image: WaldoImg},
-                        {name: 'Wenda', image: WendaImg},
-                        {name: 'Odlaw', image: OdlawImg},
-                        {name: 'Whitebeard', image: WhitebeardImg}];
-    
+    const [message, setMessage] = useState('Select character!');
+
+    function handleSelect(characterName) {
+        const characters = props.characters;
+        let index;
+        for (const i in props.characters) {
+            if (characters[i].name === characterName && !characters[i].found) {
+                index = i;
+            }
+        }
+        if (index !== undefined) {
+            if (checkAnswer(characterName, props.coords)) {
+                props.setCharacters((chars) => {
+                    const newCharacters = chars.map(
+                        (char) => { return { ...char } });
+                    newCharacters[index].found = true;
+                    return newCharacters;
+                });
+            } else {
+                setMessage('Try again!');
+            }
+        }
+    }
+
     return (
         props.coords &&
         <div
@@ -18,15 +35,17 @@ export default function CharacterSelector(props) {
                 top: props.coords[1] - 25,
             }}
         >
-            {characters.map((character) => {
+            <div>{message}</div>
+            {props.characters.map((character) => {
                 return (
-                <div
-                    className="character"
-                    key={character.name}
-                >
-                    <img src={character.image} alt={character.name}></img>
-                    <div>{character.name}</div>
-                </div>
+                    <div
+                        className="character"
+                        key={character.name}
+                        onClick={() => handleSelect(character.name)}
+                    >
+                        <img src={character.image} alt={character.name}></img>
+                        <div>{character.found ? 'Found!' : character.name}</div>
+                    </div>
                 );
             })}
         </div>
