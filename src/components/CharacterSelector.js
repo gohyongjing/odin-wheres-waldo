@@ -1,5 +1,5 @@
 import { useState } from "react";
-import checkAnswer from "./checkAnswer";
+import checkAnswer from "../checkAnswer";
 
 export default function CharacterSelector(props) {
     const [message, setMessage] = useState('Select character!');

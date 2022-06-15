@@ -3,11 +3,11 @@ import { useState } from "react";
 import BoundingBox from "./BoundingBox";
 import CharacterSelector from "./CharacterSelector";
 
-import GameImg from "./wheres-waldo.jpg";
-import WaldoImg from "./Waldo.webp";
-import WendaImg from "./Wenda.webp";
-import OdlawImg from "./Odlaw.webp";
-import WhitebeardImg from "./Whitebeard.webp";
+import GameImg from "../images/wheres-waldo.jpg";
+import WaldoImg from "../images/Waldo.webp";
+import WendaImg from "../images/Wenda.webp";
+import OdlawImg from "../images/Odlaw.webp";
+import WhitebeardImg from "../images/Whitebeard.webp";
 
 function App() {
   const [clicked, setClicked] = useState(null);
