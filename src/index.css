@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 95vw;
+  height: auto;
+}
+
+.bounding-box {
+  position: absolute;
+  border: 5px solid yellow;
+}
+
+.character-selector {
+  padding: 5px;
+  position: absolute;
+  background-color: darkgrey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.character-selector > .character {
+  padding-right: 5px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.character-selector img {
+  width: 50px;
+}
