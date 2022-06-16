@@ -17,7 +17,7 @@ export default function CharacterSelector(props) {
             }
         }
         if (index !== undefined) {
-            checkAnswer(characterName, props.coords, props.app).then((result) => {
+            checkAnswer(characterName, props.coords).then((result) => {
             if (result) {
                 props.setCharacters((chars) => {
                     const newCharacters = chars.map(

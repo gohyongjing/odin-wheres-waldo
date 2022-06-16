@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-import { initializeApp } from "firebase/app";
-import { getFirebaseConfig } from '../firebase-config.js';
-
 import BoundingBox from "./BoundingBox";
 import CharacterSelector from "./CharacterSelector";
 
@@ -20,8 +17,6 @@ function App() {
     {name: 'Odlaw', image: OdlawImg, found: false},
     {name: 'Whitebeard', image: WhitebeardImg, found: false}]
   );
-
-  const app = initializeApp(getFirebaseConfig());
 
   function handleClick(e) {
     setClicked((prevClicked) => {
@@ -42,7 +37,7 @@ function App() {
         onClick={handleClick}
       ></img>
       <BoundingBox coords={clicked}/>
-      <CharacterSelector coords={clicked} characters={characters} setCharacters={setCharacters} app={app}/>
+      <CharacterSelector coords={clicked} characters={characters} setCharacters={setCharacters} />
     </div>
   );
 }
